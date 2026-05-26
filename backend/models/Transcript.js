@@ -2,18 +2,28 @@ const mongoose = require("mongoose");
 
 const transcriptSchema = new mongoose.Schema(
   {
-    filename: {
+    fileName: {
       type: String,
       required: true,
     },
 
-    transcription: {
+    originalName: {
       type: String,
       required: true,
+    },
+
+    transcript: {
+      type: String,
+      required: true,
+    },
+
+    audioUrl: {
+      type: String,
     },
 
     duration: {
       type: Number,
+      default: 0,
     },
   },
   {

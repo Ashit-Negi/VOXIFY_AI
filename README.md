@@ -32,3 +32,18 @@ AI-powered Speech-to-Text SaaS application built with Next.js, Express.js, Mongo
 - Backend initialized
 - Groq API configured
 - MONGODB api configured
+
+### Day 1 part 2
+
+### backend progress
+
+- transcript model created
+- Multer middleware configured
+- audio upload api implemented
+- static uploads serving enabled
+
+### for ai
+
+- groq whisper api integrated
+- speech-to-text conversion implemented
+- MongoDB transcript storage implemented
