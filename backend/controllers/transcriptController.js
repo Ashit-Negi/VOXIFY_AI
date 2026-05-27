@@ -15,11 +15,16 @@ exports.transcribeAudio = async (req, res) => {
 
     const filePath = req.file.path;
 
+    const selectedLanguage =
+      req.body.language === "auto" ? undefined : req.body.language;
+
     // GROQ WHISPER API
     const transcription = await groq.audio.transcriptions.create({
       file: fs.createReadStream(filePath),
 
       model: "whisper-large-v3",
+      language: selectedLanguage,
+      temperature: 0,
     });
 
     // SAVE TO DATABASE

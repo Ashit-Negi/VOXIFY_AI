@@ -47,3 +47,24 @@ AI-powered Speech-to-Text SaaS application built with Next.js, Express.js, Mongo
 - groq whisper api integrated
 - speech-to-text conversion implemented
 - MongoDB transcript storage implemented
+
+### Day 2
+
+### Frontend Progress
+
+- Dashboard layout implemented
+- Sidebar UI created
+- UploadBox component created
+- TranscriptBox component created
+- Frontend connected with backend APIs
+- AI transcript display implemented
+
+### Language Support
+
+Implemented multilanguage transcription support:
+
+- English
+- Hindi
+- Spanish
+- French
+- Auto Detect
