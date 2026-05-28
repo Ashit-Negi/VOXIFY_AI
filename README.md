@@ -68,3 +68,15 @@ Implemented multilanguage transcription support:
 - Spanish
 - French
 - Auto Detect
+
+### Transcript Management Features
+
+- Recent transcripts history section implemented
+- Transcript history cards created
+- Dynamic transcript details page implemented
+- Full transcript viewing functionality added
+
+### Productivity Features
+
+- Copy transcript functionality implemented
+- Download transcript as .txt feature added

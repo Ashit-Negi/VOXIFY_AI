@@ -6,6 +6,8 @@ import UploadBox from "@/components/dashboard/UploadBox";
 
 import TranscriptBox from "@/components/dashboard/TranscriptBox";
 
+import RecentTranscripts from "@/components/dashboard/RecentTranscripts";
+
 export default function Home() {
   const [transcript, setTranscript] = useState("");
 
@@ -26,6 +28,8 @@ export default function Home() {
 
         <TranscriptBox transcript={transcript} loading={loading} />
       </div>
+
+      <RecentTranscripts />
     </>
   );
 }
