@@ -1,6 +1,6 @@
 import { FileText } from "lucide-react";
 
-export default function TranscriptBox({ transcript, loading }) {
+export default function TranscriptBox({ transcript, loading, liveTranscript }) {
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 min-h-[400px]">
       <div className="flex items-center gap-3 mb-6">
@@ -15,7 +15,9 @@ export default function TranscriptBox({ transcript, loading }) {
         </div>
       ) : (
         <p className="text-zinc-300 leading-8 whitespace-pre-wrap">
-          {transcript || "Upload audio to generate transcript"}
+          {liveTranscript ||
+            transcript ||
+            "Start speaking to see live transcript"}
         </p>
       )}
     </div>

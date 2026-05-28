@@ -83,3 +83,30 @@ Implemented multilanguage transcription support:
 - Copy transcript functionality implemented
 - Download transcript as .txt feature added
 - Add delete button to both in transcrip page as well as in recent transcript
+
+#### Realtime Streaming Progress
+
+- Socket.io realtime architecture implemented
+- Frontend ↔ Backend realtime connection working
+- Live audio chunk streaming implemented
+- AssemblyAI realtime websocket integrated
+- WAV/PCM realtime audio streaming configured
+- Dynamic WAV encoder setup added for Next.js
+- English realtime captions working successfully
+
+#### UI Improvements
+
+- Realtime recorder UI improved
+- Live transcript rendering implemented
+- Cleaner realtime dashboard experience added
+
+#### Important Notes
+
+- Upload transcription supports:
+  - English
+  - Hindi
+  - Spanish
+  - French
+  - Auto Detect
+
+- Realtime captions currently optimized for English

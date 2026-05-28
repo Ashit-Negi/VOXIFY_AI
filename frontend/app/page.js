@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import UploadBox from "@/components/dashboard/UploadBox";
 
@@ -8,11 +8,29 @@ import TranscriptBox from "@/components/dashboard/TranscriptBox";
 
 import RecentTranscripts from "@/components/dashboard/RecentTranscripts";
 
+import Recorder from "@/components/dashboard/Recorder";
+
+import socket from "@/utils/socket";
+
 export default function Home() {
   const [transcript, setTranscript] = useState("");
-
+  const [liveTranscript, setLiveTranscript] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("Socket Connected:", socket.id);
+    });
+
+    socket.on("live-transcript", (text) => {
+      setLiveTranscript(text);
+    });
+
+    return () => {
+      socket.off("connect");
+      socket.off("live-transcript");
+    };
+  }, []);
   return (
     <>
       <div className="mb-8">
@@ -23,10 +41,14 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-6">
+      <div className="grid lg:grid-cols-3 gap-6">
         <UploadBox setTranscript={setTranscript} setLoading={setLoading} />
-
-        <TranscriptBox transcript={transcript} loading={loading} />
+        <Recorder setTranscript={setTranscript} setLoading={setLoading} />
+        <TranscriptBox
+          transcript={transcript}
+          loading={loading}
+          liveTranscript={liveTranscript}
+        />
       </div>
 
       <RecentTranscripts />
