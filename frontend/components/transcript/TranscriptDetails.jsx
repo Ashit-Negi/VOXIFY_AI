@@ -1,8 +1,13 @@
 "use client";
 
-import { Copy, Download } from "lucide-react";
+import { Copy, Download, Trash2 } from "lucide-react";
+
+import API from "@/utils/api";
+import { useRouter } from "next/navigation";
 
 export default function TranscriptDetails({ transcript }) {
+  const router = useRouter();
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(transcript.transcript);
@@ -30,7 +35,23 @@ export default function TranscriptDetails({ transcript }) {
 
     window.URL.revokeObjectURL(url);
   };
+  const handleDelete = async () => {
+    const confirmDelete = confirm(
+      "Are you sure you want to delete this transcript?",
+    );
 
+    if (!confirmDelete) return;
+
+    try {
+      await API.delete(`/api/transcribe/${transcript._id}`);
+
+      alert("Transcript deleted");
+
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
       <div className="flex items-start justify-between mb-6">
@@ -57,6 +78,14 @@ export default function TranscriptDetails({ transcript }) {
           >
             <Download size={18} />
             Download
+          </button>
+
+          <button
+            onClick={handleDelete}
+            className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-xl flex items-center gap-2 transition"
+          >
+            <Trash2 size={18} />
+            Delete
           </button>
         </div>
       </div>

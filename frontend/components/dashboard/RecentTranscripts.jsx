@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import { Trash2 } from "lucide-react";
 import API from "@/utils/api";
 
 import Link from "next/link";
@@ -26,7 +26,19 @@ export default function RecentTranscripts() {
       setLoading(false);
     }
   };
+  const handleDelete = async (id) => {
+    const confirmDelete = confirm("Delete this transcript?");
 
+    if (!confirmDelete) return;
+
+    try {
+      await API.delete(`/api/transcribe/${id}`);
+
+      setTranscripts((prev) => prev.filter((item) => item._id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 mt-6">
       <div className="flex items-center justify-between mb-6">
@@ -50,6 +62,16 @@ export default function RecentTranscripts() {
                   <span className="text-xs text-zinc-500">
                     {new Date(item.createdAt).toLocaleDateString()}
                   </span>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      handleDelete(item._id);
+                    }}
+                    className="text-gray-500  hover:text-gray-400 transition"
+                  >
+                    <Trash2 size={18} />
+                  </button>
                 </div>
 
                 <p className="text-zinc-400 line-clamp-3">{item.transcript}</p>

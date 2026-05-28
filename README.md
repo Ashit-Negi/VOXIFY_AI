@@ -69,6 +69,8 @@ Implemented multilanguage transcription support:
 - French
 - Auto Detect
 
+### Day 3
+
 ### Transcript Management Features
 
 - Recent transcripts history section implemented
@@ -80,3 +82,4 @@ Implemented multilanguage transcription support:
 
 - Copy transcript functionality implemented
 - Download transcript as .txt feature added
+- Add delete button to both in transcrip page as well as in recent transcript
