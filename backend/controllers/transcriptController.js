@@ -29,6 +29,8 @@ exports.transcribeAudio = async (req, res) => {
 
     // SAVE TO DATABASE
     const savedTranscript = await Transcript.create({
+      user: req.user._id,
+
       fileName: req.file.filename,
 
       originalName: req.file.originalname,
@@ -58,7 +60,7 @@ exports.transcribeAudio = async (req, res) => {
 
 exports.getAllTranscripts = async (req, res) => {
   try {
-    const transcripts = await Transcript.find().sort({
+    const transcripts = await Transcript.find({ user: req.user._id }).sort({
       createdAt: -1,
     });
 
@@ -77,8 +79,10 @@ exports.getAllTranscripts = async (req, res) => {
 
 exports.getSingleTranscript = async (req, res) => {
   try {
-    const transcript = await Transcript.findById(req.params.id);
-
+    const transcript = await Transcript.findOne({
+      _id: req.params.id,
+      user: req.user._id,
+    });
     if (!transcript) {
       return res.status(404).json({
         success: false,
@@ -100,7 +104,10 @@ exports.getSingleTranscript = async (req, res) => {
 
 exports.deleteTranscript = async (req, res) => {
   try {
-    const transcript = await Transcript.findById(req.params.id);
+    const transcript = await Transcript.findOne({
+      _id: req.params.id,
+      user: req.user._id,
+    });
 
     if (!transcript) {
       return res.status(404).json({

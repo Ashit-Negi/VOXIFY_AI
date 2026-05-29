@@ -1,21 +1,15 @@
 const express = require("express");
-
 const cors = require("cors");
 
 require("dotenv").config();
 
 const path = require("path");
-
 const http = require("http");
-
 const connectDB = require("./config/db");
-
 const uploadRoutes = require("./routes/uploadRoutes");
-
 const transcriptRoutes = require("./routes/transcriptRoutes");
-
 const initializeSocket = require("./socket/socketServer");
-
+const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 const server = http.createServer(app);
@@ -28,8 +22,8 @@ app.use(express.json());
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+app.use("/api/auth", authRoutes);
 app.use("/api/upload", uploadRoutes);
-
 app.use("/api/transcribe", transcriptRoutes);
 
 app.get("/", (req, res) => {

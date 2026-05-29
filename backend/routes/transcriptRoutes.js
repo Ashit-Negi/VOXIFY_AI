@@ -3,20 +3,21 @@ const express = require("express");
 const router = express.Router();
 
 const upload = require("../middleware/multerMiddleware");
-
+const { protect } = require("../middleware/authMiddleware");
 const {
   transcribeAudio,
   getAllTranscripts,
   getSingleTranscript,
+
   deleteTranscript,
 } = require("../controllers/transcriptController");
 
-router.post("/", upload.single("audio"), transcribeAudio);
+router.post("/", protect, upload.single("audio"), transcribeAudio);
 
-router.get("/", getAllTranscripts);
+router.get("/", protect, getAllTranscripts);
 
-router.get("/:id", getSingleTranscript);
+router.get("/:id", protect, getSingleTranscript);
 
-router.delete("/:id", deleteTranscript);
+router.delete("/:id", protect, deleteTranscript);
 
 module.exports = router;

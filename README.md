@@ -110,3 +110,41 @@ Implemented multilanguage transcription support:
   - Auto Detect
 
 - Realtime captions currently optimized for English
+
+### Day 4
+
+### Authentication
+
+- JWT authentication implemented
+- Register & Login APIs added
+- Protected routes implemented
+- Get current user API added
+- Persistent login functionality added
+
+### User Management
+
+- User-specific transcripts implemented
+- Secure transcript access added
+- User-specific history implemented
+- Secure transcript deletion added
+
+### Landing Page
+
+- Public landing page created
+- Hero section added
+- Features section added
+- How It Works section added
+
+### UI Improvements
+
+- Responsive dashboard implemented
+- Mobile sidebar added
+- User profile card added
+- Authentication loading state added
+
+### History Improvements
+
+- Dedicated history page added
+- Search transcripts functionality implemented
+- Auto-refresh history implemented
+- Copy, Download and Delete actions improved
