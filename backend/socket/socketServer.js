@@ -5,11 +5,11 @@ const WebSocket = require("ws");
 const initializeSocket = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:3000",
-
+      origin: ["http://localhost:3000", "https://voxify-ai-lovat.vercel.app"],
       methods: ["GET", "POST"],
     },
   });
+  
 
   io.on("connection", (socket) => {
     console.log("User Connected:", socket.id);

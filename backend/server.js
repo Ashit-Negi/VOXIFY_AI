@@ -18,7 +18,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://voxify-ai.vercel.app"],
+    origin: ["http://localhost:3000", "https://voxify-ai-lovat.vercel.app"],
   }),
 );
 
