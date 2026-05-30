@@ -148,3 +148,7 @@ Implemented multilanguage transcription support:
 - Search transcripts functionality implemented
 - Auto-refresh history implemented
 - Copy, Download and Delete actions improved
+
+### Author
+
+- Developed by Ashit Negi
