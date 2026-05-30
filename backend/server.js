@@ -16,7 +16,11 @@ const server = http.createServer(app);
 
 connectDB();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://voxify-ai.vercel.app"],
+  }),
+);
 
 app.use(express.json());
 
